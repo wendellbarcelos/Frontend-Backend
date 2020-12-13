@@ -1,126 +1,48 @@
-{% extends "layout.html" %}
+{% extends "layout.njk" %}
 
 {% block head%}
-<title>Videos - Wendell Barcelos</title>
+    <title>Videos - Wendell Barcelos</title>
 
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 {% endblock %}
 
 {% block content %}
 
-
-<div id="wrapper">
-    <h1>Videos</h1>
-</div>
-
-<section class="cards">
-
-    <div class="card" id="8HUi90wooIA">
-        <div class="card-image-container">
-            <img src="https://img.youtube.com/vi/8HUi90wooIA/maxresdefault.jpg" alt="Video Aula">
-        </div>
-        <div class="card-content">
-            <p>Illustration Style Website - Speed Design and Code ( HTML & CSS )
-            </p>
-        </div>
-        <div class="card-info">
-            <p>14 min</p>
-            <p class="card-price">Free</p>
-        </div>
+    <div id="wrapper">
+        <h1>Videos</h1>
     </div>
 
-    <div class="card" id="JCKp7m9ALE0">
-        <div class="card-image-container">
-            <img src="https://img.youtube.com/vi/JCKp7m9ALE0/maxresdefault.jpg" alt="Video Aula">
-        </div>
-        <div class="card-content">
-            <p>Dota2 Dashboard Navigation Menu | ReactJS + HTML + CSS | Speed Coding ( Part 1 )
-            </p>
-        </div>
-        <div class="card-info">
-            <p>11 min</p>
-            <p class="card-price">Free</p>
-        </div>
+    <section class="cards">
+
+        {% for item in items %}
+            <div class="card" id="{{item.id}}">
+                <div class="card-image-container {{ 'featured-wrapper' if item.featured }}">
+                    <img src="https://img.youtube.com/vi/{{item.id}}/maxresdefault.jpg" alt="Imagem de {{item.title}}">
+                    {% if item.featured %}
+                        <div class="featured">Featured</div>
+                    {% endif %}
+                </div>
+                <div class="card-content">
+                    <p>{{item.title}}
+                    </p>
+                </div>
+                <div class="card-info">
+                    <p>{{item.duration}}</p>
+                    <p class="card-price">{{item.price}}</p>
+                </div>
+            </div>
+        {% endfor %}
+
+    </section>
+
+
+    <div class="social">
+        <a href="https://github.com/wendellbarcelos" target="_blank">Github</a>
+        <a href="https://www.linkedin.com/in/wendell-barcelos/" target="_blank">Linkedin</a>
+        <a href="mailto:wendellbarcelos.wb@gmail.com" target="_blank">Gmail</a>
     </div>
 
-    <div class="card" id="vpn8UUkfj6A">
-        <div class="card-image-container">
-            <img src="https://img.youtube.com/vi/vpn8UUkfj6A/maxresdefault.jpg" alt="Video Aula">
-        </div>
-        <div class="card-content">
-            <p>Web Design // Retro Flat Design // Speed Art + Speed Code
-            </p>
-        </div>
-        <div class="card-info">
-            <p>10 min</p>
-            <p class="card-price">Free</p>
-        </div>
-    </div>
-
-    <div class="card" id="fabwoIpHxaY">
-        <div class="card-image-container">
-            <img src="https://img.youtube.com/vi/fabwoIpHxaY/maxresdefault.jpg" alt="Video Aula">
-        </div>
-        <div class="card-content">
-            <p>Web Design — Star Wars Design — Speed Art + Speed Code
-            </p>
-        </div>
-        <div class="card-info">
-            <p>19 min</p>
-            <p class="card-price">Free</p>
-        </div>
-    </div>
-
-    <div class="card" id="gbBXIzBNkVo">
-        <div class="card-image-container">
-            <img src="https://img.youtube.com/vi/gbBXIzBNkVo/maxresdefault.jpg" alt="Video Aula">
-        </div>
-        <div class="card-content">
-            <p>Html/CSS: Animated login form css | Speed coding
-            </p>
-        </div>
-        <div class="card-info">
-            <p>5 min</p>
-            <p class="card-price">Free</p>
-        </div>
-    </div>
-
-    <div class="card" id="JDiurjhpOXA">
-        <div class="card-image-container">
-            <img src="https://img.youtube.com/vi/JDiurjhpOXA/maxresdefault.jpg" alt="Video Aula">
-        </div>
-        <div class="card-content">
-            <p>Speed Coding | HTML, CSS, JS - Calculator</p>
-        </div>
-        <div class="card-info">
-            <p>9:15 min</p>
-            <p class="card-price">Free</p>
-        </div>
-    </div>
-
-</section>
-
-<div class="modal-overlay">
-    <div class="modal">
-        <a class="close-modal">
-            <i class="material-icons">close</i>
-        </a>
-
-        <div class="modal-content">
-            <iframe src="" frameborder="0"></iframe>
-        </div>
-
-    </div>
-</div>
-
-<div class="social">
-    <a href="https://github.com/wendellbarcelos" target="_blank">Github</a>
-    <a href="https://www.linkedin.com/in/wendell-barcelos/" target="_blank">Linkedin</a>
-    <a href="mailto:wendellbarcelos.wb@gmail.com" target="_blank">Gmail</a>
-</div>
-
-<script src="scripts.js"></script>
-
+    <script src="/scripts.js"></script>
 
 {% endblock %}
